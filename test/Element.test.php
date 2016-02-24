@@ -50,4 +50,11 @@ public function testChildElementCount() {
 	);
 }
 
+public function testClassName() {
+	$document = new HTMLDocument(test\Helper::HTML_MORE);
+	$className = "plug";
+	$p = $document->getElementsByClassName($className)->item(0);
+	$this->assertEquals($className, $p->className);
+}
+
 }#
