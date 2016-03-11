@@ -5,6 +5,8 @@ machine:
 test:
   override:
     - vendor/bin/phpunit
+  post:
+    - vendor/bin/codacycoverage phpunit
 
 notify:
   webhooks:
