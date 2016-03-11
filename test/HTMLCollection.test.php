@@ -20,4 +20,18 @@ public function testNonElementsRemoved() {
 	$this->assertInstanceOf("\phpgt\dom\Element", $bodyChildren->item(0));
 }
 
+public function testNamedItem() {
+	$document = new HTMLDocument(test\Helper::HTML_MORE);
+	$collection = $document->body->children;
+
+	$idMatch = $collection->namedItem("firstParagraphTag");
+	$this->assertSame($document->getElementById("firstParagraphTag"), $idMatch);
+
+	$nameMatch = $collection->namedItem("forms");
+	$this->assertSame($document->querySelector("[name='forms']"), $nameMatch);
+
+	$nothingMatch = $collection->namedItem("nothing");
+	$this->assertNull($nothingMatch);
+}
+
 }#

@@ -17,7 +17,7 @@ const HTML_MORE = <<<HTML
 	</h1>
 	<img src="header.jpg" />
 	<a name="firstParagraph"></a>
-	<p>There are a few elements in this document.</p>
+	<p id="firstParagraphTag">There are a few elements in this document.</p>
 	<p>This is so we can test different traversal methods.</p>
 	<p class="plug">This package is a part of the phpgt webengine.</p>
 	<h2 id="who">Who made this?</h2>
