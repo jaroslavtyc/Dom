@@ -9,8 +9,8 @@ The modern DOM API for PHP 7 projects
 <a href="https://circleci.com/gh/phpgt/dom" target="_blank">
     <img src="https://img.shields.io/circleci/project/phpgt/dom/master.svg?style=flat-square" alt="Build status" />
 </a>
-<a href="https://scrutinizer-ci.com/g/phpgt/dom" target="_blank">
-    <img src="https://img.shields.io/scrutinizer/g/phpgt/dom/master.svg?style=flat-square" alt="Code quality" />
+<a href="https://www.codacy.com/app/phpgt/Dom/dashboard" target="_blank">
+    <img src="https://img.shields.io/codacy/c44df2d9c89a4809896914fd1a40bedd/master.svg?style=flat-square" alt="Code quality" />
 </a>
 <a href="https://scrutinizer-ci.com/g/phpgt/dom" target="_blank">
     <img src="https://img.shields.io/scrutinizer/coverage/g/phpgt/dom/master.svg?style=flat-square" alt="Code coverage" />
