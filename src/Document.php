@@ -22,7 +22,6 @@ public function __construct($document = null) {
 	$this->registerNodeClass("\DOMComment", "\phpgt\dom\Comment");
     if ($document instanceof \DOMDocument) {
         $this->appendChild($this->importNode($document->documentElement, true));
-        return;
     }
 }
 
