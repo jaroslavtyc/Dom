@@ -12,24 +12,43 @@ use LiveProperty, NonDocumentTypeChildNode, ChildNode, ParentNode;
 
 private $classList;
 
-public function querySelector(string $selector) {
-	$htmlCollection = $this->css($selector);
+/**
+ * Returns the first element within the document (using depth-first pre-order
+ * traversal of the document's nodes|by first element in document markup and
+ * iterating through sequential nodes by order of amount of child nodes) that
+ * matches the specified group of selectors.
+ *
+ * @param string $selectors One or more CSS selectors separated by commas
+ * @return Element|null Returns null if no matches are found; otherwise, it
+ * returns the first matching element.
+ */
+public function querySelector(string $selectors) {
+	$htmlCollection = $this->css($selectors);
 	return $htmlCollection->item(0);
 }
 
-public function querySelectorAll(string $selector):HTMLCollection {
-	return $this->css($selector);
+/**
+ * Returns a list of the elements within the document (using depth-first
+ * pre-order traversal of the document's nodes) that match the specified group
+ * of selectors.
+ *
+ * @param string $selectors One or more CSS selectors separated by commas
+ * @return HTMLCollection Contains all the elements in the document that are
+ * matched by any of the specified selectors.
+ */
+public function querySelectorAll(string $selectors):HTMLCollection {
+	return $this->css($selectors);
 }
 
 /**
  * returns true if the element would be selected by the specified selector
  * string; otherwise, returns false.
  *
- * @param string $selector The CSS selector to check against
+ * @param string $selectors One or more CSS selectors separated by commas
  * @return bool True if this element is selectable by provided selector
  */
-public function matches(string $selector):bool {
-	$matches = $this->ownerDocument->querySelectorAll($selector);
+public function matches(string $selectors):bool {
+	$matches = $this->ownerDocument->querySelectorAll($selectors);
 	$i = $matches->length;
 	while(--$i >= 0 && $matches->item($i) !== $this);
 
@@ -43,7 +62,8 @@ public function matches(string $selector):bool {
  *
  * @param string $names a string representing the list of class names to
  *  match; class names are separated by whitespace
- * @return HTMLCollection
+ * @return HTMLCollection Contains all the elements in the document that are
+ * matched by any of the specified class names.
  */
 public function getElementsByClassName(string $names):HTMLCollection {
 	$namesArray = explode(" ", $names);
@@ -54,13 +74,24 @@ public function getElementsByClassName(string $names):HTMLCollection {
  * Returns the closest ancestor of the current element (or itself)
  * which matches the selectors.
  * @param string $selectors css selectors
- * @return Element|null
+ * @return Element|null Returns null if no matches are found; otherwise, it
+ * returns the first matching element.
  */
 public function closest(string $selectors) {
 	$collection = $this->css($selectors, "ancestor-or-self::");
 	return $collection->item(count($collection) - 1);
 }
 
+/**
+ * Internal function used to convert a provided CSS selector into a XPath query,
+ * usable by the native DOMXPath class.
+ *
+ * @param string $selector One or more CSS selectors separated by commas
+ * @param string $prefix Optional. XPath query to prefix with (default matches
+ * the CSS selector mechanism)
+ * @return HTMLCollection Contains all the elements in the document that are
+ * matched by any of the specified selectors.
+ */
 private function css(
 string $selector, string $prefix = "descendant-or-self::"):HTMLCollection {
 	$converter = new CssSelectorConverter();
@@ -68,9 +99,17 @@ string $selector, string $prefix = "descendant-or-self::"):HTMLCollection {
 	return $this->xPath($xPathSelector);
 }
 
-private function xPath(string $selector):HTMLCollection {
+/**
+ * Performs an XPath query on the current Element, returning an HTMLCollection
+ * of matching Elements.
+ *
+ * @param string $queries One or more XPath queries, separated by commas
+ * @return HTMLCollection Contains all the elements in the document that are
+ * matched by any of the specified queries.
+ */
+private function xPath(string $queries):HTMLCollection {
 	$x = new DOMXPath($this->ownerDocument);
-	return new HTMLCollection($x->query($selector, $this));
+	return new HTMLCollection($x->query($queries, $this));
 }
 
 public function prop_get_classList() {
@@ -87,7 +126,7 @@ public function prop_get_value() {
 		return $this->$methodName();
 	}
 
-	return NULL;
+	return null;
 }
 
 public function prop_set_value($newValue) {
@@ -114,7 +153,7 @@ private function value_set_select($newValue) {
 
 	if($newSelectedIndex !== NULL) {
 		foreach ($selectedIndexes as $i) {
-			$options->item($i)->removeAttribute('selected');	
+			$options->item($i)->removeAttribute('selected');
 		}
 
 		$options->item($newSelectedIndex)->setAttribute('selected', 'selected');
@@ -143,4 +182,5 @@ private function value_get_select() {
 static public function isSelectOptionSelected(Element $option) {
 	return $option->hasAttribute('selected') && $option->getAttribute('selected');
 }
+
 }#
