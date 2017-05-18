@@ -29,4 +29,13 @@ public function testChildElementCount() {
 		"\Gt\Dom\Element", $document->body->lastElementChild);
 }
 
+public function testContains() {
+	$document = new HTMLDocument(test\Helper::HTML_MORE);
+	$field = $document->querySelector("input[name=fieldA]");
+	$form2 = $document->forms[1];
+// $field is contained within the body, but not the form2 node.
+	$this->assertTrue($document->body->contains($field));
+	$this->assertFalse($form2->contains($field));
+}
+
 }#
