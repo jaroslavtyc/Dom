@@ -71,6 +71,10 @@ private function prop_get_embeds() {
 	return $this->querySelectorAll("embed");
 }
 
+private function prop_get_scripts() {
+	return $this->querySelectorAll("script");
+}
+
 private function prop_get_title() {
 	$title = $this->head->getElementsByTagName("title")->item(0);
 
