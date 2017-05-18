@@ -152,4 +152,10 @@ public function testOptionalTags() {
 	$this->assertCount(1, $document->body->children);
 }
 
+public function testEmbeds() {
+	$document = new HTMLDocument(test\Helper::HTML_MORE);
+	$this->assertCount(2, $document->embeds);
+	$this->assertEquals("bed", $document->embeds[0]->id);
+}
+
 }#

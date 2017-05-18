@@ -67,6 +67,10 @@ private function prop_get_links() {
 	return $this->querySelectorAll("a[href]:not(a[href=''])");
 }
 
+private function prop_get_embeds() {
+	return $this->querySelectorAll("embed");
+}
+
 private function prop_get_title() {
 	$title = $this->head->getElementsByTagName("title")->item(0);
 
