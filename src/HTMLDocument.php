@@ -75,6 +75,10 @@ private function prop_get_scripts() {
 	return $this->querySelectorAll("script");
 }
 
+private function prop_get_stylesheets() {
+	return $this->querySelectorAll("link[rel=stylesheet]");
+}
+
 private function prop_get_title() {
 	$title = $this->head->getElementsByTagName("title")->item(0);
 
