@@ -40,6 +40,9 @@ const HTML_MORE = <<<HTML
 		<input name="fieldA" type="text" />
 		<input name="who" class="c1 c3" />
 		<button type="submit">Submit</button>
+
+		<embed id="bed" name="emb" src="/thing1.pdf" />
+		<embed id="emb" name="bed" src="/thing2.pdf" />
 	</form>
 	<form>
 		<input name="fieldB" type="text" class="c1 c2 c3 c4" />
