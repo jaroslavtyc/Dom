@@ -49,4 +49,16 @@ public function testReplaceWithInSameDocument() {
 	$this->assertNotSame($h1, $document->firstChild);
 }
 
+public function testParentElement() {
+	$document = new HTMLDocument(test\Helper::HTML);
+	$child = $document->body->firstChild;
+	$this->assertSame($child->parentNode, $child->parentElement);
+
+	$fragment = $document->createDocumentFragment();
+	$fragment->appendXML("<h1>Test</h1>");
+	$child = $fragment->firstChild;
+	$this->assertSame($fragment, $child->parentNode);
+	$this->assertNull($child->parentElement);
+}
+
 }#
