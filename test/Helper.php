@@ -126,6 +126,25 @@ const HTML_VALUE = <<<HTML
 </body>
 </html>
 HTML;
+const HTML_HEADFILES = <<<HTML
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Here are some files</title>
+		<link rel="stylesheet" href="/style.css" />
+		<link rel="stylesheet" href="/style-extended.css" />
+		<link rel="next" href="/page-two" />
+		<script>
+		alert("Hello!");
+		</script>
+	</head>
+	<body>
+		<h1>Hello, World!</h1>
+	</body>
+	<script src="/script.js"></script>
+</html>
+HTML;
 const XML = <<<XML
 <?xml version="1.0" encoding="UTF-8" ?>
 <breakfast-menu>

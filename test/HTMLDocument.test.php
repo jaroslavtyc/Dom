@@ -158,4 +158,11 @@ public function testEmbeds() {
 	$this->assertEquals("bed", $document->embeds[0]->id);
 }
 
+public function testScripts() {
+	$document = new HTMLDocument(test\Helper::HTML_HEADFILES);
+	$this->assertCount(2, $document->scripts);
+	$document->scripts[0]->remove();
+	$this->assertCount(1, $document->scripts);
+}
+
 }#
