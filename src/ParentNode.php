@@ -21,6 +21,20 @@ namespace Gt\Dom;
  */
 trait ParentNode {
 
+public function contains(Element $node):bool {
+	foreach($this->children as $child) {
+		if($child === $node) {
+			return true;
+		}
+
+		if($child->contains($node)) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
 private function prop_get_children():HTMLCollection {
 	return new HTMLCollection($this->childNodes);
 }
