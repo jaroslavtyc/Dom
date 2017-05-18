@@ -51,4 +51,14 @@ public function replaceWith(DOMNode $replacement) {
 	$this->remove();
 }
 
+private function prop_get_parentElement() {
+	$parentNode = $this->parentNode;
+
+	if($parentNode instanceof Element) {
+		return $parentNode;
+	}
+
+	return null;
+}
+
 }#
