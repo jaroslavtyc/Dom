@@ -165,4 +165,9 @@ public function testScripts() {
 	$this->assertCount(1, $document->scripts);
 }
 
+public function testStylesheets() {
+	$document = new HTMLDocument(test\Helper::HTML_HEADFILES);
+	$this->assertCount(2, $document->stylesheets);
+}
+
 }#
