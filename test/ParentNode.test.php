@@ -38,4 +38,19 @@ public function testContains() {
 	$this->assertFalse($form2->contains($field));
 }
 
+public function testIsSameNode() {
+	$document = new HTMLDocument(test\Helper::HTML_MORE);
+	$input = $document->querySelector("input");
+	$this->assertTrue(
+		$input->isSameNode(
+			$document->querySelector("[name=fieldA]")
+		)
+	);
+	$this->assertFalse(
+		$input->isSameNode(
+			$document->querySelector("[name=fieldB]")
+		)
+	);
+}
+
 }#
