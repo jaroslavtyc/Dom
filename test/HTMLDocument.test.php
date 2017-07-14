@@ -161,4 +161,10 @@ public function testEmptyHTMLDocument() {
 	$this->assertNotNull($document->body);
 }
 
+public function testGetElementsByTagName() {
+	$document = new HTMLDocument(test\Helper::HTML_MORE);
+	$pElementList = $document->getElementsByTagName("p");
+	$this->assertInstanceOf(HTMLCollection::class, $pElementList);
+}
+
 }#
